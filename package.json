@@ -20,7 +20,8 @@
     "@mate-academy/eslint-config": "^0.0.29",
     "husky": "^9.1.1",
     "lint-staged": "^15.2.7",
-    "prettier": "^3.3.3"
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.6"
   },
   "scripts": {
     "prepare": "husky install",
