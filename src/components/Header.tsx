@@ -21,8 +21,8 @@ const Header: React.FC = () => {
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(
-      'uppercase text-secondary font-extrabold text-xs hover:text-primary relative active:text-primary focus:text-primary font-Mont',
-      { 'text-primary pb-6 border-b-4 border-primary': isActive },
+      'uppercase text-secondary duration-150 hover:border-b-4 hover:border-primary pb-6 font-extrabold text-xs hover:text-primary relative active:text-primary focus:text-primary font-Mont',
+      { 'text-primary border-b-4 border-primary': isActive },
     );
 
   useEffect(() => {
@@ -30,17 +30,17 @@ const Header: React.FC = () => {
   }, [pathname]);
 
   return (
-    <header className="h-16 border-b border-elements pl-4 desktop:pl-6 flex justify-between items-center relative">
+    <header className="sticky bg-white z-50 top-0 h-12 tablet:h-16 border-b border-elements pl-4 desktop:pl-6 flex justify-between items-center">
       <div className="flex justify-start gap-6">
         <NavLink to="/" className="flex">
-          <img src={logo} alt="Nice gadgets" className="object-cover" />
+          <img src={logo} className="object-cover" alt="Nice gadgets" />
         </NavLink>
 
         <nav className="hidden tablet:flex">
           <ul className="flex tablet:space-x-8 desktop:space-x-16 tablet:px-4 desktop:px-6">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <NavLink to={`${link.path}`} className={getLinkClass}>
+                <NavLink className={getLinkClass} to={`${link.path}`}>
                   {link.name}
                 </NavLink>
               </li>
@@ -51,24 +51,27 @@ const Header: React.FC = () => {
 
       <div className="flex items-center justify-end">
         <div className="border-l border-elements box-border">
-          <a href="/#" className="px-4 py-6 desktop:p-6 hidden tablet:flex">
+          <a
+            className="hover:shadow-lg duration-200 px-4 py-6 desktop:p-6 hidden tablet:flex"
+            href="/#"
+          >
             <FiHeart />
           </a>
         </div>
         <div className="border-l border-elements box-border mx-0">
-          <a
-            href="/#"
-            className="px-4 py-6 desktop:p-6 hidden tablet:flex justify-end"
+          <NavLink
+            className="hover:shadow-lg duration-200 px-4 py-6 desktop:p-6 hidden tablet:flex justify-end"
+            to="/cart"
           >
             <FiShoppingBag />
-          </a>
+          </NavLink>
           <span className="flex p-4 tablet:hidden">
             <input
               type="checkbox"
               id="nav__toggle"
+              className="hidden peer/nav z-50"
               onChange={handleOpenMenu}
               checked={menuIsOpen}
-              className="hidden peer/nav z-50"
             />
             <label htmlFor="nav__toggle">
               {menuIsOpen ? <FiX /> : <FiMenu />}

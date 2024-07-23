@@ -1,9 +1,12 @@
 import { Outlet } from 'react-router-dom';
 
+import useInitCart from './hooks/useLocalStorage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 function App() {
+  useInitCart();
+
   return (
     <div>
       <Header />
