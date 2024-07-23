@@ -3,7 +3,7 @@ import { FiChevronUp } from 'react-icons/fi';
 
 import logo from '../assets/images/logo.png';
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer className="border-t border-elements h-48 tablet:h-16 desktop:px-38 box-border">
       <div className="flex flex-col px-4 py-8 tablet:flex-row tablet:px-6 tablet:justify-around">
@@ -60,3 +60,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;

@@ -12,7 +12,7 @@ const navLinks = [
   { name: 'Accessories', path: 'accessories' },
 ];
 
-export const Header: React.FC = () => {
+const Header: React.FC = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(
       'uppercase text-secondary font-extrabold text-xs hover:text-primary relative active:text-primary focus:text-primary font-Mont',
@@ -59,3 +59,5 @@ export const Header: React.FC = () => {
     </header>
   );
 };
+
+export default Header;
