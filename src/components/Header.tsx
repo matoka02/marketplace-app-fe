@@ -4,7 +4,7 @@ import { FiHeart, FiMenu, FiShoppingBag, FiX } from 'react-icons/fi';
 import classNames from 'classnames';
 
 import BurgerMenu from '../pages/BurgerMenu';
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/logo.svg';
 
 const navLinks = [
   { name: 'Home', path: '/' },
