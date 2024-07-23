@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { FiHeart } from 'react-icons/fi';
 
 import { IProduct } from '../types/Product';
+import { addItemToCart, useAppDispatch } from '../redux';
 import { ProductProperties } from './ProductProperties';
 import { Button } from './Button';
 
@@ -12,14 +13,19 @@ type Props = {
 
 const Card = ({ product }: Props) => {
   const [favorite, setFavorite] = useState(false);
+  const dispatch = useAppDispatch();
   const productProps = [
     { name: 'Screen', value: product.screen! },
     { name: 'Capacity', value: product.capacity! },
     { name: 'RAM', value: product.ram! },
   ];
 
-  const handleClick = () => {
+  const handleAddToFavorite = () => {
     setFavorite(!favorite);
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addItemToCart({ id: product.id, count: 1 }));
   };
 
   return (
@@ -47,7 +53,7 @@ const Card = ({ product }: Props) => {
         <ProductProperties properties={productProps} />
 
         <div className="flex justify-between gap-x-[8px]">
-          <Button>Add to cart</Button>
+          <Button onClick={handleAddToCart}>Add to cart</Button>
           <button
             className={classNames([
               'w-10 h-10',
@@ -56,7 +62,7 @@ const Card = ({ product }: Props) => {
               'active:scale-95',
               'flex justify-center items-center shrink-0 duration-300',
             ])}
-            onClick={handleClick}
+            onClick={handleAddToFavorite}
           >
             <FiHeart
               className={classNames({

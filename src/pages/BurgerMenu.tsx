@@ -5,7 +5,7 @@ import HeaderForBurger from '../components/HeaderForBurger';
 
 const BurgerMenu = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="fixed inset-0 top-12 z-50 bg-white -translate-x-full peer-checked/nav:-translate-x-0 duration-300 flex justify-between flex-col ">
       <HeaderForBurger />
 
       <main className="flex-grow mt-6">

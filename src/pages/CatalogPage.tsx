@@ -60,31 +60,31 @@ const CatalogPage: React.FC = () => {
         </div>
         <div className="flex gap-4 mb-6">
           <Dropdown
-            label="Sort by"
+            className="w-[136px] tablet:w-[187px]"
+            label="Sort By"
             query="sortBy"
             options={sortOptions}
-            className="w-[136px] tablet:w-[187px]"
           />
+
           <Dropdown
-            label="Items on page"
             query="perPage"
-            options={perPageOptions}
             className="w-[136px]"
+            label="Items on page"
+            options={perPageOptions}
           />
         </div>
       </header>
-
       <div className="mb-10 grid grid-cols-1 gap-4 tablet:grid-cols-2 desktop:grid-cols-4">
         {products.map((product) => (
-          <Card key={product._id} product={product} />
+          <Card product={product} key={product._id} />
         ))}
       </div>
       <Pagination
+        className="mb-20"
         total={total}
         perPage={perPage}
         currentPage={currentPage}
         onPageChange={(pageNo) => handlePageNumber(+pageNo)}
-        className="mb-20"
       />
     </main>
   );
