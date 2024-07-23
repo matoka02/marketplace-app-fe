@@ -4,6 +4,7 @@ import App from './App';
 import NotFound from './pages/NotFound';
 import ScrollToTop from './components/ScrollToTop';
 import CatalogPage from './pages/CatalogPage';
+import CartPage from './pages/CartPage';
 
 export const Root = () => {
   <BrowserRouter>
@@ -21,6 +22,7 @@ export const Root = () => {
         <Route path="accessories">
           <Route path="/:accessoryId?" element={<h1>Accessories Page</h1>} />
         </Route>
+        <Route path="cart" element={<CartPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
