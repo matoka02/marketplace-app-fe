@@ -1,8 +1,9 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { FiHeart, FiMenu, FiShoppingBag } from 'react-icons/fi';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { FiHeart, FiMenu, FiShoppingBag, FiX } from 'react-icons/fi';
 import classNames from 'classnames';
 
+import BurgerMenu from '../pages/BurgerMenu';
 import logo from '../assets/images/logo.png';
 
 const navLinks = [
@@ -13,18 +14,28 @@ const navLinks = [
 ];
 
 const Header: React.FC = () => {
+  const { pathname } = useLocation();
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+
+  const handleOpenMenu = () => setMenuIsOpen((prev) => !prev);
+
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(
       'uppercase text-secondary font-extrabold text-xs hover:text-primary relative active:text-primary focus:text-primary font-Mont',
       { 'text-primary pb-6 border-b-4 border-primary': isActive },
     );
 
+  useEffect(() => {
+    setMenuIsOpen(false);
+  }, [pathname]);
+
   return (
     <header className="h-16 border-b border-elements pl-4 desktop:pl-6 flex justify-between items-center relative">
       <div className="flex justify-start gap-6">
-        <a href="/">
-          <img src={logo} alt="LogoPicture" className="flex" />
-        </a>
+        <NavLink to="/" className="flex">
+          <img src={logo} alt="Nice gadgets" className="object-cover" />
+        </NavLink>
+
         <nav className="hidden tablet:flex">
           <ul className="flex tablet:space-x-8 desktop:space-x-16 tablet:px-4 desktop:px-6">
             {navLinks.map((link) => (
@@ -51,11 +62,22 @@ const Header: React.FC = () => {
           >
             <FiShoppingBag />
           </a>
-          <a href="/#" className="px-4 py-6 flex tablet:hidden">
-            <FiMenu />
-          </a>
+          <span className="flex p-4 tablet:hidden">
+            <input
+              type="checkbox"
+              id="nav__toggle"
+              onChange={handleOpenMenu}
+              checked={menuIsOpen}
+              className="hidden peer/nav z-50"
+            />
+            <label htmlFor="nav__toggle">
+              {menuIsOpen ? <FiX /> : <FiMenu />}
+            </label>
+            <BurgerMenu />
+          </span>
         </div>
       </div>
+      <BurgerMenu />
     </header>
   );
 };
