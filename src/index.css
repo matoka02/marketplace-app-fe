@@ -35,12 +35,10 @@
   font-weight: 800;
 }
 
-
 /*=========TAILWIND=========*/
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 /*=========LOCAL=========*/
