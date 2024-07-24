@@ -3,13 +3,15 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 import { cartSlice } from './slices/cartSlice';
 import { favoriteSlice } from './slices/favoriteSlice';
+import { productApi } from './api/productAPI';
 
 const store = configureStore({
   reducer: {
+    [productApi.reducerPath]: productApi.reducer,
     [cartSlice.name]: cartSlice.reducer,
     [favoriteSlice.name]: favoriteSlice.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productApi.middleware),
 });
 
 export { store };
