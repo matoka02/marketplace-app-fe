@@ -35,6 +35,7 @@ export const CheckoutModal: React.FC<Props> = ({ showModal, onCloseModal }) => {
               Your payment was successfull
             </h3>
             <p className="pt-8 flex items-center justify-center font-Mont text-secondary gap-2">
+              Thank you for shopping with us!
               <span className="flex items-center">
                 <FiSmile className="text-accent mb-1" />
               </span>
