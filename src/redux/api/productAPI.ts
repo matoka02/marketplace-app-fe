@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
 
+import { IProduct } from '../../types/Product';
+
 export const productApi = createApi({
   reducerPath: 'products',
   baseQuery: fetchBaseQuery({
@@ -12,7 +14,7 @@ export const productApi = createApi({
         params: { page, perPage, sortBy },
       }),
     }),
-    getProductsById: builder.query({
+    getProductsById: builder.query<IProduct,string>({
       query: (productId) => `/products/${productId}`,
     }),
   }),
