@@ -2,12 +2,15 @@ import React from 'react';
 
 import { useAppSelector } from '../redux';
 import { Card } from '../components/Card';
+import { BreadCrumb } from '../components/BreadCrumb';
 
 const FavoritesPage: React.FC = () => {
   const { favoriteItems } = useAppSelector((state) => state.favorites);
 
   return (
     <main className="container mx-auto flex flex-col items-center tablet:items-start px-4 pt-6 tablet:px-6 desktop:w-[1200px]">
+      <BreadCrumb />
+
       <header>
         <h1 className="mb-2 text-[32px] font-extrabold leading-[41px] tracking-[0.32px] tablet:mt-10 tablet:text-5xl">
           Favorites Page

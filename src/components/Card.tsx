@@ -17,9 +17,11 @@ import { Button } from './Button';
 
 type Props = {
   product: IProduct;
+  isFetching?: boolean;
 };
 
-export const Card = ({ product }: Props) => {
+export const Card = ({ product, isFetching }: Props) => {
+  const { items } = useAppSelector((state) => state.cart);
   const { favoriteItems } = useAppSelector((state) => state.favorites);
   const [favorite, setFavorite] = useState(false);
   const dispatch = useAppDispatch();
@@ -38,6 +40,12 @@ export const Card = ({ product }: Props) => {
   };
 
   const handleAddToCart = () => {
+    if (items.some(({ id }) => id === product._id)) {
+      toast.error('his product already in cart');
+
+      return;
+    }
+
     const itemData = {
       id: product._id,
       name: product.name,
@@ -54,36 +62,44 @@ export const Card = ({ product }: Props) => {
 
   return (
     <article
-      className="card box-border hover:shadow-card rounded-lg p-8 min-w-[272px] border max-h-[440px] tablet:max-h-[506px]
-    border-secondary bg-white"
+      className={classNames([
+        'card box-border p-8 relative',
+        'border border-secondary rounded-lg',
+        'min-w-[272px]  max-h-[440px]',
+        'bg-white',
+        'hover:shadow-card tablet:max-h-[506px]',
+      ])}
     >
+      <div
+        className={classNames('absolute inset-0 opacity-50 -z-10', {
+          'bg-secondary !z-10': isFetching,
+        })}
+      />
       <div className="grid auto-rows-auto gap-y-2 object-cover">
         <NavLink to={product._id}>
           <img
+            className="mx-auto max-h-[130px] tablet:max-h-[200px]"
             src={product.images[0]}
             alt={product.namespaceId}
-            className="mx-auto max-h-[130px] tablet:max-h-[200px]"
           />
         </NavLink>
+
         <h3 className="text-sm font-semibold mt-4 line-clamp-1">
           {product.name}
         </h3>
         <div className="flex gap-2">
-          <h3 className="text-xl font-extrabold leading-8  before:content-['$']">
+          <h3 className="text-xl font-extrabold leading-8 before:content-['$']">
             {product.priceDiscount}
           </h3>
           <h3 className="relative text-xl line-through font-semibold leading-8 text-secondary before:content-['$']">
             {product.priceRegular}
           </h3>
         </div>
-
         <span className="border border-secondary border-t w-full" />
         <ProductProperties properties={productProps} />
-
         <div className="flex justify-between gap-x-[8px]">
           <Button onClick={handleAddToCart}>Add to cart</Button>
           <button
-            onClick={() => handleAddToFavorite(product)}
             className={classNames([
               'w-10 h-10',
               'rounded-full border border-icons',
@@ -91,6 +107,7 @@ export const Card = ({ product }: Props) => {
               'active:scale-95',
               'flex justify-center items-center shrink-0 duration-300',
             ])}
+            onClick={() => handleAddToFavorite(product)}
           >
             {isFavorite(product._id) ? (
               <FaHeart className="text-secondary-accent" />

@@ -1,4 +1,10 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+} from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
 import App from './App';
@@ -18,14 +24,15 @@ export const Root = () => {
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} />
-        <Route path="phones" element={<CatalogPage />}>
+        <Route path="phones" element={<Outlet />}>
+          <Route index element={<CatalogPage />} />
           <Route path="/:phoneId?" element={<ProductPage />} />
         </Route>
         <Route path="tablets">
-          <Route path="/:tabletId?" element={<h1>Tablets Page</h1>} />
+          <Route path="/:tabletId?" element={<CatalogPage />} />
         </Route>
         <Route path="accessories">
-          <Route path="/:accessoryId?" element={<h1>Accessories Page</h1>} />
+          <Route path="/:accessoryId?" element={<CatalogPage />} />
         </Route>
         <Route path="favorites" element={<FavoritesPage />} />
         <Route path="cart" element={<CartPage />} />

@@ -35,7 +35,11 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           <FiX className="text-icons w-4 h-4 hover:scale-150 ease-in duration-300" />
         </button>
 
-        <img className="w-20 h-20" src={image} alt="product demo" />
+        <img
+          className="w-20 h-20 object-contain"
+          src={image}
+          alt="product demo"
+        />
 
         <p className="max-w-xs">{itemName}</p>
       </div>
@@ -96,7 +100,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           </span>
         </div>
         <p className="text-primary font-extrabold text-[22px] select-none">
-          {price}
+          ${price}
         </p>
       </div>
     </div>
