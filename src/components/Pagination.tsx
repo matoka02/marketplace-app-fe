@@ -14,7 +14,7 @@ type Props = {
   className?: string;
 };
 
-const Pagination: FC<Props> = ({
+export const Pagination: FC<Props> = ({
   total,
   perPage,
   currentPage,
@@ -152,5 +152,3 @@ const Pagination: FC<Props> = ({
     </div>
   );
 };
-
-export default Pagination;

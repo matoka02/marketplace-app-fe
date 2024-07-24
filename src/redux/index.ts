@@ -11,7 +11,8 @@ const store = configureStore({
     [cartSlice.name]: cartSlice.reducer,
     [favoriteSlice.name]: favoriteSlice.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productApi.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(productApi.middleware),
 });
 
 export { store };

@@ -5,7 +5,7 @@ interface LineProps {
   height?: string;
 }
 
-const Line: React.FC<LineProps> = ({ width, height = '1px' }) => {
+export const Line: React.FC<LineProps> = ({ width, height = '1px' }) => {
   return (
     <span
       style={{
@@ -15,5 +15,3 @@ const Line: React.FC<LineProps> = ({ width, height = '1px' }) => {
     ></span>
   );
 };
-
-export default Line;
