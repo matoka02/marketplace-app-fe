@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { FiArrowLeft, FiArrowRight, FiHeart } from 'react-icons/fi';
 
+import { useGetProductByIdQuery } from '../redux/api/productAPI';
+import { IDescription } from '../types/Description';
 import { BreadCrumb } from '../components/BreadCrumb';
 import { ColorSelector } from '../components/ColorSelector';
 import { MemoryButton } from '../components/MemoryButton';
 import { Button } from '../components/Button';
 import { Line } from '../components/Line';
-import { useGetProductByIdQuery } from '../redux/api/productAPI';
 
 const noop = () => {};
 
@@ -23,6 +24,7 @@ const ProductPage = () => {
   if (isError) {
     return <p>Error loading products</p>;
   }
+
   const handleClick = () => {
     setFavorite(!favorite);
   };
