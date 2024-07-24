@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FiArrowLeft, FiArrowRight, FiHeart } from 'react-icons/fi';
 
-import BreadCrumbs from '../components/BreadCrumb';
-import ColorSelector from '../components/ColorSelector';
-import MemoryButton from '../components/MemoryButton';
+import { BreadCrumbs } from '../components/BreadCrumb';
+import { ColorSelector } from '../components/ColorSelector';
+import { MemoryButton } from '../components/MemoryButton';
 import { Button } from '../components/Button';
-import Line from '../components/Line';
+import { Line } from '../components/Line';
 
 const noop = () => {};
 

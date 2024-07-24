@@ -1,12 +1,10 @@
 import React from 'react';
 
 import { useAppSelector } from '../redux';
-import Card from '../components/Card';
+import { Card } from '../components/Card';
 
 const FavoritesPage: React.FC = () => {
-  const favoriteItems = useAppSelector(
-    (state) => state.favorites.favoriteItems,
-  );
+  const { favoriteItems } = useAppSelector((state) => state.favorites);
 
   return (
     <main className="container mx-auto flex flex-col items-center tablet:items-start px-4 pt-6 tablet:px-6 desktop:w-[1200px]">
