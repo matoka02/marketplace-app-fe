@@ -67,7 +67,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             <FiMinus />
           </span>
 
-          <span>{count}</span>
+          <span className="select-none inline-block">{count}</span>
 
           <span
             className={classNames(
@@ -95,7 +95,9 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             <FiPlus />
           </span>
         </div>
-        <p className="text-primary font-extrabold text-[22px]">{price}</p>
+        <p className="text-primary font-extrabold text-[22px] select-none">
+          {price}
+        </p>
       </div>
     </div>
   );

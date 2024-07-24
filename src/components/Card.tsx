@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { FiHeart } from 'react-icons/fi';
+import { FaHeart } from 'react-icons/fa';
 
 import { IProduct } from '../types/Product';
 import {
@@ -50,16 +52,20 @@ export const Card = ({ product }: Props) => {
 
   return (
     <article
-      className="card box-border rounded-lg p-8 min-w-[272px] border max-h-[440px] tablet:max-h-[506px]
+      className="card box-border hover:shadow-card rounded-lg p-8 min-w-[272px] border max-h-[440px] tablet:max-h-[506px]
     border-secondary bg-white"
     >
       <div className="grid auto-rows-auto gap-y-2 object-cover">
-        <img
-          src={product.images[0]}
-          alt={product.namespaceId}
-          className="mx-auto max-h-[130px] tablet:max-h-[200px]"
-        />
-        <h3 className="text-sm font-semibold mt-4">{product.name}</h3>
+        <NavLink to={product._id}>
+          <img
+            src={product.images[0]}
+            alt={product.namespaceId}
+            className="mx-auto max-h-[130px] tablet:max-h-[200px]"
+          />
+        </NavLink>
+        <h3 className="text-sm font-semibold mt-4 line-clamp-1">
+          {product.name}
+        </h3>
         <div className="flex gap-2">
           <h3 className="text-xl font-extrabold leading-8  before:content-['$']">
             {product.priceDiscount}
@@ -84,11 +90,11 @@ export const Card = ({ product }: Props) => {
               'flex justify-center items-center shrink-0 duration-300',
             ])}
           >
-            <FiHeart
-              className={classNames({
-                'text-secondary-accent': isFavorite(product._id),
-              })}
-            />
+            {isFavorite(product._id) ? (
+              <FaHeart className="text-secondary-accent" />
+            ) : (
+              <FiHeart />
+            )}
           </button>
         </div>
       </div>
