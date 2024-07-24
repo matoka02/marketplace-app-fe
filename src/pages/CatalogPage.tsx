@@ -6,6 +6,8 @@ import { IProduct } from '../types/Product';
 import { Dropdown } from '../components/DropDown';
 import { Card } from '../components/Card';
 import { Pagination } from '../components/Pagination';
+import { Loader } from '../components/Loader';
+import { ErrorMessage } from '../components/ErrorMessage';
 
 const sortOptions = [
   { value: 'Newest', label: 'Newest' },
@@ -33,11 +35,11 @@ const CatalogPage: React.FC = () => {
   useEffect(() => {}, [currentPage, perPage, sortBy]);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (isError) {
-    return <p>Error loading products</p>;
+    return <ErrorMessage />;
   }
 
   const total = products ? products.totalProducts : 0;

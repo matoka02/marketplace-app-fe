@@ -11,7 +11,7 @@ function App() {
     <div>
       <Header />
 
-      <div className="min-h-[75vh] p-4">
+      <div className="min-h-[74vh] p-4">
         <Outlet />
       </div>
 

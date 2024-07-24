@@ -9,6 +9,8 @@ import { ColorSelector } from '../components/ColorSelector';
 import { MemoryButton } from '../components/MemoryButton';
 import { Button } from '../components/Button';
 import { Line } from '../components/Line';
+import { Loader } from '../components/Loader';
+import { ErrorMessage } from '../components/ErrorMessage';
 
 const noop = () => {};
 
@@ -18,11 +20,11 @@ const ProductPage = () => {
   const { data, isError, isLoading } = useGetProductByIdQuery(phoneId);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (isError) {
-    return <p>Error loading products</p>;
+    return <ErrorMessage />;
   }
 
   const characteristicsData = {
