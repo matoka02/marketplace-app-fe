@@ -2,11 +2,11 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import App from './App';
 import NotFound from './pages/NotFound';
-import ScrollToTop from './components/ScrollToTop';
 import CatalogPage from './pages/CatalogPage';
 import CartPage from './pages/CartPage';
 import ProductPage from './pages/ProductPage';
 import FavoritesPage from './pages/FavoritesPage';
+import ScrollToTop from './components/ScrollToTop';
 
 export const Root = () => {
   <BrowserRouter>

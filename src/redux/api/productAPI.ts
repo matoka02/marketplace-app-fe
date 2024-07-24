@@ -12,7 +12,10 @@ export const productApi = createApi({
         params: { page, perPage, sortBy },
       }),
     }),
+    getProductsById: builder.query({
+      query: (productId) => `/products/${productId}`,
+    }),
   }),
 });
 
-export const { useGetProductsQuery } = productApi;
+export const { useGetProductsQuery, useGetProductByIdQuery } = productApi;
