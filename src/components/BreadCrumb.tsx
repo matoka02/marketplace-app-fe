@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiArrowRight, FiHome } from 'react-icons/fi';
 
-export const BreadCrumbs = () => {
+export const BreadCrumb = () => {
   return (
     <div className="flex items-center col-span-4 tablet:col-span-12 desktop:col-span-24 mt-[25px]">
       <FiHome />
