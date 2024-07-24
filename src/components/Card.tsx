@@ -3,7 +3,12 @@ import classNames from 'classnames';
 import { FiHeart } from 'react-icons/fi';
 
 import { IProduct } from '../types/Product';
-import { addItemToCart, useAppDispatch } from '../redux';
+import {
+  addItemToCart,
+  toggleFavorite,
+  useAppDispatch,
+  useAppSelector,
+} from '../redux';
 import { ProductProperties } from './ProductProperties';
 import { Button } from './Button';
 
@@ -12,15 +17,20 @@ type Props = {
 };
 
 const Card = ({ product }: Props) => {
+  const { favoriteItems } = useAppSelector((state) => state.favorites);
   const [favorite, setFavorite] = useState(false);
   const dispatch = useAppDispatch();
+  const isFavorite = (id: string) =>
+    favoriteItems.some((item) => item._id === id);
+
   const productProps = [
     { name: 'Screen', value: product.screen! },
     { name: 'Capacity', value: product.capacity! },
     { name: 'RAM', value: product.ram! },
   ];
 
-  const handleAddToFavorite = () => {
+  const handleAddToFavorite = (currentProduct: IProduct) => {
+    dispatch(toggleFavorite(currentProduct));
     setFavorite(!favorite);
   };
 
@@ -55,6 +65,7 @@ const Card = ({ product }: Props) => {
         <div className="flex justify-between gap-x-[8px]">
           <Button onClick={handleAddToCart}>Add to cart</Button>
           <button
+            onClick={() => handleAddToFavorite(product)}
             className={classNames([
               'w-10 h-10',
               'rounded-full border border-icons',
@@ -62,11 +73,10 @@ const Card = ({ product }: Props) => {
               'active:scale-95',
               'flex justify-center items-center shrink-0 duration-300',
             ])}
-            onClick={handleAddToFavorite}
           >
             <FiHeart
               className={classNames({
-                'text-secondary-accent': favorite,
+                'text-secondary-accent': isFavorite(product._id),
               })}
             />
           </button>
