@@ -14,10 +14,27 @@ export const productApi = createApi({
         params: { page, perPage, sortBy },
       }),
     }),
-    getProductsById: builder.query<IProduct,string>({
+    getProductsById: builder.query<IProduct, string>({
       query: (productId) => `/products/${productId}`,
+    }),
+    getProductsByParams: builder.query<IProduct, any>({
+      query: ({ id, capacity, color }) => ({
+        url: `/products/${id}`,
+        params: { color, capacity },
+      }),
+    }),
+    getProductsByCategory: builder.query({
+      query: (type) => ({
+        url: `/products`,
+        params: { type },
+      }),
     }),
   }),
 });
 
-export const { useGetProductsQuery, useGetProductByIdQuery } = productApi;
+export const {
+  useGetProductsQuery,
+  useGetProductByIdQuery,
+  useLazyGetProductByParamsQuery,
+  useGetProductsByCategoryQuery,
+} = productApi;

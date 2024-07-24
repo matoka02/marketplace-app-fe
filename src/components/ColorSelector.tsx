@@ -1,54 +1,43 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
+import React, { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router';
+import classNames from 'classnames';
+
+import { useLazyGetProductByParamsQuery } from '../redux/api/productAPI';
 
 interface ColorSelectorProps {
   color: string;
-  onClick: () => void;
+  isActive: boolean;
 }
 
 export const ColorSelector: React.FC<ColorSelectorProps> = ({
   color,
-  onClick,
+  isActive,
 }) => {
-  const circleSize = 32;
+  const { phoneId } = useParams();
+  const navigate = useNavigate();
+  const [trigger, { data, isLoading, isUninitialized }] =
+    useLazyGetProductByParamsQuery();
+
+  const handleChangeColor = () => {
+    trigger({ id: phoneId, color });
+  };
+
+  useEffect(() => {
+    if (data) {
+      navigate(`/phones/${data?._id}`);
+    }
+  }, [data]);
 
   return (
     <button
-      onClick={onClick}
-      className="flex"
-      style={{
-        width: `${circleSize}px`,
-        height: `${circleSize}px`,
-        marginRight: '8px',
-      }}
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={circleSize}
-        height={circleSize}
-        viewBox={`0 0 ${circleSize} ${circleSize}`}
-        style={{ fill: color }}
-        fill="none"
-        className="absolute"
-      >
-        <rect
-          x="2"
-          y="2"
-          width={circleSize - 4}
-          height={circleSize - 4}
-          rx={(circleSize - 4) / 2}
-          fill="#fcdbc1"
-          stroke="white"
-          strokeWidth="2"
-        />
-        <rect
-          x="0.5"
-          y="0.5"
-          width={circleSize - 1}
-          height={circleSize - 1}
-          rx={(circleSize - 1) / 2}
-          stroke="#0f0f11"
-        />
-      </svg>
-    </button>
+      onClick={handleChangeColor}
+      className={classNames(
+        `flex border-[2px] border-secondary rounded-full h-8 w-8`,
+        { '!border-primary': isActive },
+      )}
+      style={{ backgroundColor: color }}
+    ></button>
   );
 };
