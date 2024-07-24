@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 import App from './App';
 import NotFound from './pages/NotFound';
@@ -10,6 +11,7 @@ import FavoritesPage from './pages/FavoritesPage';
 
 export const Root = () => {
   <BrowserRouter>
+    <Toaster />
     <ScrollToTop />
     <Routes>
       <Route path="/" element={<App />}>
