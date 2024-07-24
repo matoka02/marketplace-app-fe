@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
-import { getInitialItems, useAppDispatch } from '../redux';
+import { getInitialFavorites, getInitialItems, useAppDispatch } from '../redux';
 
-const useInitCart = () => {
+const useLocalStorage = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getInitialItems());
+    dispatch(getInitialFavorites());
   }, []);
 };
 
-export default useInitCart;
+export default useLocalStorage;
