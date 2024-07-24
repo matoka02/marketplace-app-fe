@@ -1,12 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-type CartItem = {
-  id: string;
-  count: number;
-};
+import { ICartItem } from '../../types/CartItem';
 
 type InitialState = {
-  items: CartItem[];
+  items: ICartItem[];
 };
 
 const initialState: InitialState = {

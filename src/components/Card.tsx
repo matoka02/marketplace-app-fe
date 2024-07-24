@@ -16,7 +16,7 @@ type Props = {
   product: IProduct;
 };
 
-const Card = ({ product }: Props) => {
+export const Card = ({ product }: Props) => {
   const { favoriteItems } = useAppSelector((state) => state.favorites);
   const [favorite, setFavorite] = useState(false);
   const dispatch = useAppDispatch();
@@ -35,7 +35,17 @@ const Card = ({ product }: Props) => {
   };
 
   const handleAddToCart = () => {
-    dispatch(addItemToCart({ id: product.id, count: 1 }));
+    const itemData = {
+      id: product._id,
+      name: product.name,
+      price: product.priceDiscount
+        ? product.priceDiscount
+        : product.priceRegular,
+      image: product.images[0],
+      count: 1,
+    };
+
+    dispatch(addItemToCart(itemData));
   };
 
   return (
@@ -85,5 +95,3 @@ const Card = ({ product }: Props) => {
     </article>
   );
 };
-
-export default Card;

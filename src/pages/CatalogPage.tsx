@@ -3,9 +3,9 @@ import { useSearchParams } from 'react-router-dom';
 
 import { useGetProductsQuery } from '../redux/api/productAPI';
 import { IProduct } from '../types/Product';
-import Dropdown from '../components/DropDown';
-import Card from '../components/Card';
-import Pagination from '../components/Pagination';
+import { Dropdown } from '../components/DropDown';
+import { Card } from '../components/Card';
+import { Pagination } from '../components/Pagination';
 
 const sortOptions = [
   { value: 'Newest', label: 'Newest' },

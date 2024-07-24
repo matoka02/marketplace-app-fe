@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiArrowRight, FiHome } from 'react-icons/fi';
 
-const BreadCrumbs = () => {
+export const BreadCrumbs = () => {
   return (
     <div className="flex items-center col-span-4 tablet:col-span-12 desktop:col-span-24 mt-[25px]">
       <FiHome />
@@ -14,5 +14,3 @@ const BreadCrumbs = () => {
     </div>
   );
 };
-
-export default BreadCrumbs;

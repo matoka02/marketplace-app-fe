@@ -5,7 +5,10 @@ interface ColorSelectorProps {
   onClick: () => void;
 }
 
-const ColorSelector: React.FC<ColorSelectorProps> = ({ color, onClick }) => {
+export const ColorSelector: React.FC<ColorSelectorProps> = ({
+  color,
+  onClick,
+}) => {
   const circleSize = 32;
 
   return (
@@ -49,5 +52,3 @@ const ColorSelector: React.FC<ColorSelectorProps> = ({ color, onClick }) => {
     </button>
   );
 };
-
-export default ColorSelector;

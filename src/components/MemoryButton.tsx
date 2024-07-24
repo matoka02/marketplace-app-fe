@@ -6,7 +6,7 @@ interface MemoryButtonProps {
   isActive: boolean;
 }
 
-const MemoryButton: React.FC<MemoryButtonProps> = ({
+export const MemoryButton: React.FC<MemoryButtonProps> = ({
   label,
   onClick,
   isActive,
@@ -24,5 +24,3 @@ const MemoryButton: React.FC<MemoryButtonProps> = ({
     </button>
   );
 };
-
-export default MemoryButton;

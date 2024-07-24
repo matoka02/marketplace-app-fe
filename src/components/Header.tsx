@@ -5,6 +5,8 @@ import classNames from 'classnames';
 
 import BurgerMenu from '../pages/BurgerMenu';
 import logo from '../assets/images/logo.svg';
+import { useAppSelector } from '../redux';
+import { ItemCounter } from './ItemCounter';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -16,6 +18,8 @@ const navLinks = [
 const Header: React.FC = () => {
   const { pathname } = useLocation();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const { favoriteItems } = useAppSelector((state) => state.favorites);
+  const { items } = useAppSelector((state) => state.cart);
 
   const handleOpenMenu = () => setMenuIsOpen((prev) => !prev);
 
@@ -56,6 +60,7 @@ const Header: React.FC = () => {
             className="hover:shadow-lg duration-200 px-4 py-6 desktop:p-6 hidden tablet:flex"
           >
             <FiHeart />
+            <ItemCounter count={favoriteItems.length} />
           </NavLink>
         </div>
         <div className="border-l border-elements box-border mx-0">
@@ -64,6 +69,7 @@ const Header: React.FC = () => {
             className="hover:shadow-lg duration-200 px-4 py-6 desktop:p-6 hidden tablet:flex justify-end"
           >
             <FiShoppingBag />
+            <ItemCounter count={items.length} />
           </NavLink>
           <span className="flex p-4 tablet:hidden">
             <input

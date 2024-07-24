@@ -12,7 +12,7 @@ type Props = {
   options: FilterOption[];
 };
 
-const Dropdown: React.FC<Props> = (props) => {
+export const Dropdown: React.FC<Props> = (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get(props.query);
   const [isOpen, setIsOpen] = useState(false);
@@ -92,5 +92,3 @@ const Dropdown: React.FC<Props> = (props) => {
     </div>
   );
 };
-
-export default Dropdown;
