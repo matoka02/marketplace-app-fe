@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import classNames from 'classnames';
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
@@ -48,6 +49,7 @@ export const Card = ({ product }: Props) => {
     };
 
     dispatch(addItemToCart(itemData));
+    toast.success('Successfully added to cart!');
   };
 
   return (
