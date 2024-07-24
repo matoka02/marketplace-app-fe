@@ -8,6 +8,7 @@ import CatalogPage from './pages/CatalogPage';
 import CartPage from './pages/CartPage';
 import ProductPage from './pages/ProductPage';
 import FavoritesPage from './pages/FavoritesPage';
+import HomePage from './pages/HomePage';
 
 export const Root = () => {
   <BrowserRouter>
@@ -15,7 +16,7 @@ export const Root = () => {
     <ScrollToTop />
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<h1>Home</h1>} />
+        <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} />
         <Route path="phones" element={<CatalogPage />}>
           <Route path="/:phoneId?" element={<ProductPage />} />
