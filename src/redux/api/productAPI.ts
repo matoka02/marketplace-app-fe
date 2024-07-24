@@ -23,6 +23,12 @@ export const productApi = createApi({
         params: { color, capacity },
       }),
     }),
+    getProductsByCategory: builder.query({
+      query: (type) => ({
+        url: `/products`,
+        params: { type },
+      }),
+    }),
   }),
 });
 
@@ -30,4 +36,5 @@ export const {
   useGetProductsQuery,
   useGetProductByIdQuery,
   useLazyGetProductByParamsQuery,
+  useGetProductsByCategoryQuery,
 } = productApi;
