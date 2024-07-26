@@ -19,7 +19,7 @@ export const CategoryCard = ({ type, image }: Props) => {
       <img
         src={image}
         alt="phone-category"
-        className="w-full border-0 box-border rounded-lg"
+        className="w-full h-4/5 border-0 box-border rounded-lg"
       />
       <p className="font-mont font-bold text-[22px] mt-[24px] text-primary">
         {type}
