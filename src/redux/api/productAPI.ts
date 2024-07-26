@@ -9,19 +9,24 @@ export const productApi = createApi({
   }),
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: ({ page, perPage, sortBy }) => ({
+      query: ({ page, perPage, sortBy, type }) => ({
         url: `/products`,
-        params: { page, perPage, sortBy },
+        params: {
+          page,
+          perPage,
+          sortBy,
+          type,
+        },
       }),
     }),
 
-    getProductsById: builder.query<IProduct, string>({
+    getProductById: builder.query<IProduct, string>({
       query: (productId) => `/products/${productId}`,
     }),
 
-    getProductsByParams: builder.query<IProduct, any>({
+    getProductByParams: builder.query<IProduct, any>({
       query: ({ id, capacity, color }) => ({
-        url: `/products/${id}`,
+        url: `products/${id}`,
         params: { color, capacity },
       }),
     }),
@@ -32,6 +37,21 @@ export const productApi = createApi({
         params: { type },
       }),
     }),
+
+    getProductByType: builder.query({
+      query: ({ type, id }) => {
+        switch (type) {
+          case 'new':
+            return '/products/new';
+          case 'recommended':
+            return `/products/${id}/recommended`;
+          case 'discount':
+            return '/products/discount';
+          default:
+            return '/products';
+        }
+      },
+    }),
   }),
 });
 
@@ -40,4 +60,5 @@ export const {
   useGetProductByIdQuery,
   useLazyGetProductByParamsQuery,
   useGetProductsByCategoryQuery,
+  useGetProductByTypeQuery,
 } = productApi;
