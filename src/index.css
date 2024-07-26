@@ -124,3 +124,13 @@
     height: 432px !important;
   }
 }
+
+/*=========SLICK-CAROUSEL=========*/
+
+.Carousel .slick-track {
+  @apply space-x-4;
+}
+
+.slick-slider {
+  position: static !important;
+}
