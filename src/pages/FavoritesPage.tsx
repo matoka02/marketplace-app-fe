@@ -13,7 +13,7 @@ const FavoritesPage: React.FC = () => {
 
       <header>
         <h1 className="mb-2 text-[32px] font-extrabold leading-[41px] tracking-[0.32px] tablet:mt-10 tablet:text-5xl">
-          Favourites
+          Favorites
         </h1>
       </header>
       {favoriteItems.length ? (
@@ -22,13 +22,13 @@ const FavoritesPage: React.FC = () => {
             {`${favoriteItems.length} items`}
           </p>
           <div className="grid grid-cols-1 gap-4 tablet:grid-cols-2 desktop:grid-cols-4">
-            {favoriteItems.map((product) => (
-              <Card product={product} key={product._id} />
+            {favoriteItems.map((pr) => (
+              <Card product={pr} key={pr._id} />
             ))}
           </div>
         </>
       ) : (
-        <h3>You don't have favorite products</h3>
+        <h3>You don't have favourite products</h3>
       )}
     </main>
   );

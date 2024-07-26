@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import classNames from 'classnames';
 import { FiChevronLeft, FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
 
@@ -12,6 +13,7 @@ import {
 } from '../redux';
 import { useGetProductByIdQuery } from '../redux/api/productAPI';
 import { IDescription } from '../types/Description';
+
 import { BreadCrumb } from '../components/BreadCrumb';
 import { ColorSelector } from '../components/ColorSelector';
 import { MemoryButton } from '../components/MemoryButton';
@@ -28,13 +30,18 @@ const ProductPage = () => {
   const { favoriteItems } = useAppSelector((state) => state.favorites);
   const { productId } = useParams();
   const { items } = useAppSelector((state) => state.cart);
-  const { data, isError, isFetching } = useGetProductByIdQuery(productId!);
+  const { data, isError, isFetching, isLoading } = useGetProductByIdQuery(
+    productId!,
+  );
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
 
+  const isFavorite = favoriteItems.some((item) => item._id === data?.id);
+  const isAddedToCart = items.some((item) => item.id === productId);
+
   const route = pathname.split('/')[1];
   const links = [
-    { label: route[0].toUpperCase()+route.slice(1), url: `/${route}` },
+    { label: route[0].toUpperCase() + route.slice(1), url: `/${route}` },
     { label: data?.name!, url: `/phones/${data?._id!}` },
   ];
 
@@ -61,14 +68,10 @@ const ProductPage = () => {
     setCurrentImage(index);
   };
 
-  const isFavorite = favoriteItems.some((item) => item._id === data?.id);
-
   const handleToggleFavorite = () => {
     dispatch(toggleFavorite(data));
     setFavorite(!favorite);
   };
-
-  const isAddedToCart = items.some((item) => item.id === productId);
 
   const handleAddToCart = () => {
     if (items.some(({ id }) => id === data?._id)) {
@@ -83,9 +86,16 @@ const ProductPage = () => {
 
   return (
     <>
-      <main className="desktop:container mx-2 grid grid-cols-4 desktop:grid-cols-24 tablet:grid-cols-12 desktop:mx-auto gap-4 relative">
+      <main
+        className={classNames(
+          'desktop:container mx-2 grid grid-cols-4 desktop:grid-cols-24 tablet:grid-cols-12 desktop:mx-auto gap-4 relative',
+          {
+            'opacity-75 pointer-events-none': isFetching,
+          },
+        )}
+      >
         <ErrorMessage isError={isError}>
-          <Loader isLoading={isFetching}>
+          <Loader isLoading={isLoading}>
             <BreadCrumb links={links} />
             <NavLink
               to=".."
@@ -217,7 +227,6 @@ const ProductPage = () => {
                     <h2 className="mt-16 font-extrabold text-2xl text-primary">
                       About
                     </h2>
-
                     <Line width="col-span-4 w-auto tablet:col-start-7 tablet:col-span-5 tablet:w-auto desktop:col-start-12 desktop:col-span-7 desktop:w-[320px] mt-6" />
 
                     {data.description.map((descItem: IDescription) => (

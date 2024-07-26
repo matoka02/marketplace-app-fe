@@ -13,12 +13,16 @@ const HomePage = () => {
   const tabletsImage = require('../assets/images/tablets-category.png');
   const accessoriesOneImage = require('../assets/images/accessories-category.png');
 
+  const phonesBanner = require('./assets/banner-phones.png');
+  const tabletsBanner = require('./assets/banner-tablets.png');
+  const accessoriesOneBanner = require('./assets/banner-accessories.png');
+
   return (
     <main>
       <h1
         className="py-[24px] mx-[16px] max-w-[288px] font-mont font-extrabold text-[32px] line-clamp-2
-    tablet:line-clamp-none tablet:max-w-full tablet:text-[48px] tablet:py-[32px] tablet:mx-[24px]
-    desktop:max-w-[1136px] desktop:py-[56px] desktop:mx-[32px]"
+        tablet:line-clamp-none tablet:max-w-full tablet:text-[48px] tablet:py-[32px] tablet:mx-[24px]
+        desktop:max-w-[1136px] desktop:py-[56px] desktop:mx-[32px]"
       >
         Welcome to Nice Gadgets store!
       </h1>
@@ -34,7 +38,8 @@ const HomePage = () => {
           <SwiperSlide>
             <div className="mx-auto h-full tablet:w-5/6">
               <img
-                src="./assets/banner-phones.png"
+                // src="./assets/banner-phones.png"
+                src={phonesBanner}
                 alt="promo-images"
                 className="tablet:rounded-lg h-full w-full object-cover"
               />
@@ -43,7 +48,8 @@ const HomePage = () => {
           <SwiperSlide>
             <div className="mx-auto h-full tablet:w-5/6">
               <img
-                src="./assets/banner-tablets.png"
+                // src="./assets/banner-tablets.png"
+                src={tabletsBanner}
                 alt="promo-images"
                 className="tablet:rounded-lg h-full w-full object-cover"
               />
@@ -52,7 +58,8 @@ const HomePage = () => {
           <SwiperSlide>
             <div className="mx-auto h-full tablet:w-5/6">
               <img
-                src="./assets/banner-accessories.png"
+                // src="./assets/banner-accessories.png"
+                src={accessoriesOneBanner}
                 alt="promo-images"
                 className="tablet:rounded-lg h-full w-full object-cover"
               />
@@ -63,7 +70,7 @@ const HomePage = () => {
 
       <Carousel title={'Brand new models'} type={'new'} />
 
-      <section className="mt-[57px] tablet:mt-[64px] desktop:mt-[80px] desktop:max-w-[1136px] desktop:mx-auto">
+      <section className="desktop:max-w-[1136px] desktop:mx-auto">
         <h2 className="font-mont font-extrabold text-[22px] tablet:text-[32px] text-primary mx-[16px] tablet:mx-[24px] desktop:mx-[32px]">
           Shop by category
         </h2>
@@ -73,6 +80,7 @@ const HomePage = () => {
           <CategoryCard type={'Accessories'} image={accessoriesOneImage} />
         </div>
       </section>
+
       <Carousel title={'Hot prices'} type={'discount'} />
     </main>
   );
