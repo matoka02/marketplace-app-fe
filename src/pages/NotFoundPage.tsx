@@ -31,4 +31,4 @@ const NotFoundPage = () => {
   );
 };
 
-export default NotFound;
+export default NotFoundPage;

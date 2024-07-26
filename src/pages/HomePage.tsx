@@ -13,10 +13,6 @@ const HomePage = () => {
   const tabletsImage = require('../assets/images/tablets-category.png');
   const accessoriesOneImage = require('../assets/images/accessories-category.png');
 
-  const phonesBanner = require('./assets/banner-phones.png');
-  const tabletsBanner = require('./assets/banner-tablets.png');
-  const accessoriesOneBanner = require('./assets/banner-accessories.png');
-
   return (
     <main>
       <h1
@@ -38,8 +34,7 @@ const HomePage = () => {
           <SwiperSlide>
             <div className="mx-auto h-full tablet:w-5/6">
               <img
-                // src="./assets/banner-phones.png"
-                src={phonesBanner}
+                src="./assets/banner-phones.png"
                 alt="promo-images"
                 className="tablet:rounded-lg h-full w-full object-cover"
               />
@@ -48,8 +43,7 @@ const HomePage = () => {
           <SwiperSlide>
             <div className="mx-auto h-full tablet:w-5/6">
               <img
-                // src="./assets/banner-tablets.png"
-                src={tabletsBanner}
+                src="./assets/banner-tablets.png"
                 alt="promo-images"
                 className="tablet:rounded-lg h-full w-full object-cover"
               />
@@ -58,8 +52,7 @@ const HomePage = () => {
           <SwiperSlide>
             <div className="mx-auto h-full tablet:w-5/6">
               <img
-                // src="./assets/banner-accessories.png"
-                src={accessoriesOneBanner}
+                src="./assets/banner-accessories.png"
                 alt="promo-images"
                 className="tablet:rounded-lg h-full w-full object-cover"
               />
