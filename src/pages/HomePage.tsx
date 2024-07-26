@@ -11,7 +11,7 @@ const HomePage = () => {
   const image = require('../assets/images/mobile-promo.png');
   const phonesImage = require('../assets/images/phones-category.png');
   const tabletsImage = require('../assets/images/tablets-category.png');
-  const accessoriesoneImage = require('../assets/images/accessories-category.png');
+  const accessoriesOneImage = require('../assets/images/accessories-category.png');
 
   return (
     <main>
@@ -61,14 +61,14 @@ const HomePage = () => {
         </Swiper>
       </div>
 
-      <section className="mt-[57px] tablet:mt-[64px] desktop:mt-[80px]">
+      <section className="mt-[57px] tablet:mt-[64px] desktop:mt-[80px] desktop:max-w-[1136px] desktop:mx-auto">
         <h2 className="font-mont font-extrabold text-[22px] tablet:text-[32px] text-primary mx-[16px] tablet:mx-[24px] desktop:mx-[32px]">
           Shop by category
         </h2>
-        <div className="grid grid-cols-4 gap-8 tablet:grid-cols-12 tablet:gap-4 tablet:mx-[24px] desktop:mx-[32px] desktop:grid-cols-24 mx-[16px] my-[24px]">
+        <div className="grid grid-cols-4 gap-8 tablet:grid-cols-12 tablet:gap-4 tablet:mx-[24px] desktop:mx-[32px] desktop:grid-cols-24 mx-[16px] mt-[24px]">
           <CategoryCard type={'Phones'} image={phonesImage} />
           <CategoryCard type={'Tablets'} image={tabletsImage} />
-          <CategoryCard type={'Accessories'} image={accessoriesoneImage} />
+          <CategoryCard type={'Accessories'} image={accessoriesOneImage} />
         </div>
       </section>
     </main>
