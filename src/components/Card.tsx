@@ -23,11 +23,12 @@ type Props = {
 export const Card = ({ product, isFetching }: Props) => {
   const { items } = useAppSelector((state) => state.cart);
   const { favoriteItems } = useAppSelector((state) => state.favorites);
-  const isAddedToCart = items.some((item) => item.image === product._id);
   const [favorite, setFavorite] = useState(false);
   const dispatch = useAppDispatch();
+
   const isFavorite = (id: string) =>
     favoriteItems.some((item) => item._id === id);
+  const isAddedToCart = items.some((item) => item.id === product._id);
 
   const productProps = [
     { name: 'Screen', value: product.screen! },
