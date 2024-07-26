@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { FiMinus, FiPlus, FiX } from 'react-icons/fi';
 
@@ -11,7 +12,7 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ item }) => {
-  const { name: itemName, price, image, count, id } = item;
+  const { name: itemName, price, image, count, id, category } = item;
   const maxItems = 99;
   const minItems = 1;
   const dispatch = useDispatch();
@@ -41,7 +42,9 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           alt="product demo"
         />
 
-        <p className="max-w-xs">{itemName}</p>
+        <NavLink to={`/${category}/${id}`} className="max-w-xs">
+          {itemName}
+        </NavLink>
       </div>
       <div className="flex justify-between items-center gap-4 tablet:gap-6 w-full tablet:w-auto">
         <div className="flex gap-3 items-center">

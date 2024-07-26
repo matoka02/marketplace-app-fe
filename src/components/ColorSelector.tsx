@@ -26,7 +26,7 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({
 
   useEffect(() => {
     if (data) {
-      navigate(`/phones/${data?._id}`);
+      navigate(`/phones/${data._id}`);
     }
   }, [data]);
 
