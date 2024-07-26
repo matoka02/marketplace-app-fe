@@ -1,4 +1,4 @@
-export function getPagesAppay(totalPages: number, currentPage: number) {
+export function getPagesArray(totalPages: number, currentPage: number) {
   let pagesArray: (number | string)[] = [];
 
   if (totalPages > 5) {
