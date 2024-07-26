@@ -39,7 +39,7 @@ const BurgerMenu = () => {
 
       <footer className="flex justify-between">
         <NavLink
-          to="/liked"
+          to="/favorites"
           className="w-1/2 h-16 border border-elements flex items-center justify-center relative group transition-opacity duration-300"
         >
           <FiHeart />

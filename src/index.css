@@ -1,6 +1,6 @@
 /*=========FONTS=========*/
 
-@font-face {
+/* @font-face {
   font-family: 'Mont';
   src:
     url(assets/Mont/Mont-Regular.ttf) format('truetype'),
@@ -33,7 +33,7 @@
     url(assets/Mont/Mont-Heavy.woff) format('woff'),
     url(assets/Mont/Mont-Heavy.woff2) format('woff2');
   font-weight: 800;
-}
+} */
 
 /*=========TAILWIND=========*/
 

@@ -8,7 +8,7 @@ import {
 import { Toaster } from 'react-hot-toast';
 
 import App from './App';
-import NotFound from './pages/NotFound';
+import NotFoundPage from './pages/NotFoundPage';
 import ScrollToTop from './components/ScrollToTop';
 import CatalogPage from './pages/CatalogPage';
 import CartPage from './pages/CartPage';
@@ -38,7 +38,7 @@ export const Root = () => {
         </Route>
         <Route path="favorites" element={<FavoritesPage />} />
         <Route path="cart" element={<CartPage />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   </BrowserRouter>;
