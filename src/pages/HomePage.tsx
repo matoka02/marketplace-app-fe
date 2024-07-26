@@ -8,7 +8,6 @@ import 'swiper/css/navigation';
 import { CategoryCard } from '../components/CategoryCard';
 
 const HomePage = () => {
-  const image = require('../assets/images/mobile-promo.png');
   const phonesImage = require('../assets/images/phones-category.png');
   const tabletsImage = require('../assets/images/tablets-category.png');
   const accessoriesOneImage = require('../assets/images/accessories-category.png');
@@ -34,7 +33,7 @@ const HomePage = () => {
           <SwiperSlide>
             <div className="mx-auto h-full tablet:w-5/6">
               <img
-                src={image}
+                src="./assets/banner-phones.png"
                 alt="promo-images"
                 className="tablet:rounded-lg h-full w-full object-cover"
               />
@@ -43,7 +42,7 @@ const HomePage = () => {
           <SwiperSlide>
             <div className="mx-auto h-full tablet:w-5/6">
               <img
-                src={image}
+                src="./assets/banner-tablets.png"
                 alt="promo-images"
                 className="tablet:rounded-lg h-full w-full object-cover"
               />
@@ -52,7 +51,7 @@ const HomePage = () => {
           <SwiperSlide>
             <div className="mx-auto h-full tablet:w-5/6">
               <img
-                src={image}
+                src="./assets/banner-accessories.png"
                 alt="promo-images"
                 className="tablet:rounded-lg h-full w-full object-cover"
               />

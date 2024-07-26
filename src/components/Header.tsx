@@ -44,7 +44,7 @@ const Header: React.FC = () => {
           <ul className="flex tablet:space-x-8 desktop:space-x-16 tablet:px-4 desktop:px-6">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <NavLink className={getLinkClass} to={`${link.path}`}>
+                <NavLink to={`${link.path}`} className={getLinkClass}>
                   {link.name}
                 </NavLink>
               </li>
@@ -55,9 +55,9 @@ const Header: React.FC = () => {
 
       <div className="flex items-center justify-end">
         <div className="border-l border-elements box-border">
-          <NavLink
+          <NavLink 
             to="/favorites"
-            className="hover:shadow-lg duration-200 px-4 py-6 desktop:p-6 hidden tablet:flex"
+            className="relative hover:shadow-lg duration-200 px-4 py-6 desktop:p-6 hidden tablet:flex"
           >
             <FiHeart />
             <ItemCounter count={favoriteItems.length} />
@@ -65,8 +65,8 @@ const Header: React.FC = () => {
         </div>
         <div className="border-l border-elements box-border mx-0">
           <NavLink
+            className="relative hover:shadow-lg duration-200 px-4 py-6 desktop:p-6 hidden tablet:flex justify-end"
             to="/cart"
-            className="hover:shadow-lg duration-200 px-4 py-6 desktop:p-6 hidden tablet:flex justify-end"
           >
             <FiShoppingBag />
             <ItemCounter count={items.length} />
