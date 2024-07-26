@@ -55,7 +55,7 @@ const Header: React.FC = () => {
 
       <div className="flex items-center justify-end">
         <div className="border-l border-elements box-border">
-          <NavLink 
+          <NavLink
             to="/favorites"
             className="relative hover:shadow-lg duration-200 px-4 py-6 desktop:p-6 hidden tablet:flex"
           >
