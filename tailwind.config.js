@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /** @type {import('tailwindcss').config} */
 
 const defaultTheme = require('tailwindcss/defaultTheme');
@@ -11,7 +12,7 @@ module.exports = {
       desktop: '1200px',
     },
     extend: {
-      fontfamily: {
+      fontFamily: {
         sans: ['Mont', ...defaultTheme.fontFamily.sans],
       },
       colors: {
@@ -35,10 +36,10 @@ module.exports = {
         card: '0 2px 16px 0 rgba(0, 0, 0, 0.1)',
         'card-dark': '0 2px 16px 0 rgba(276, 276, 276, 0.40)',
       },
-      gridTemplatecolumns: {
+      gridTemplateColumns: {
         24: 'repeat(24, minmax(0, 1fr))',
       },
-      gridcolumn: {
+      gridColumn: {
         'span-24': 'span 24 / span 24',
       },
     },
