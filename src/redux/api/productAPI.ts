@@ -5,7 +5,7 @@ import { IProduct } from '../../types/Product';
 export const productApi = createApi({
   reducerPath: 'products',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://dreamteam.onrender.com',
+    baseUrl: 'https://ghostmatoka.onrender.com',
   }),
   endpoints: (builder) => ({
     getProducts: builder.query({
