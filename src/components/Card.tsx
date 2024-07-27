@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import classNames from 'classnames';
 import { FiHeart } from 'react-icons/fi';
@@ -25,6 +26,7 @@ export const Card = ({ product, isFetching }: Props) => {
   const { favoriteItems } = useAppSelector((state) => state.favorites);
   const [favorite, setFavorite] = useState(false);
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const isFavorite = (id: string) =>
     favoriteItems.some((item) => item._id === id);
@@ -43,7 +45,7 @@ export const Card = ({ product, isFetching }: Props) => {
 
   const handleAddToCart = () => {
     if (items.some(({ id }) => id === product._id)) {
-      toast.error('his product already in cart');
+      toast.error(t('toTheCartError'));
 
       return;
     }
@@ -60,7 +62,7 @@ export const Card = ({ product, isFetching }: Props) => {
     };
 
     dispatch(addItemToCart(itemData));
-    toast.success('Successfully added to cart!');
+    toast.success(t('toTheCart'));
   };
 
   return (
@@ -108,10 +110,12 @@ export const Card = ({ product, isFetching }: Props) => {
           </h3>
         </div>
         <span className="border border-secondary-light dark:border-secondary-dark border-t w-full" />
+
         <ProductProperties properties={productProps} />
+
         <div className="flex justify-between gap-x-[8px]">
           <Button onClick={handleAddToCart} outline={!!isAddedToCart}>
-            {isAddedToCart ? 'Added to cart' : 'Add to cart'}
+            {isAddedToCart ? t('addedToCart') : t('addToCart')}
           </Button>
           <button
             className={classNames([
