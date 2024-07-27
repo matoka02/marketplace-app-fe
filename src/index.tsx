@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 
 import { store } from './redux';
+import './localization/i18n';
 import { Root } from './Root';
 import './index.css';
 

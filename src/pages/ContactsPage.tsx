@@ -1,8 +1,12 @@
+import { useTranslation } from 'react-i18next';
+
 import { contacts } from '../utils/contacts';
 import { BreadCrumb } from '../components/BreadCrumb';
 import { ContactCard } from '../components/ContactCard';
 
 const ContactsPage = () => {
+  const { t } = useTranslation();
+
   return (
     <main
       className="container mx-auto flex flex-col items-center
@@ -12,7 +16,7 @@ const ContactsPage = () => {
 
       <div className="mb-8">
         <h1 className="mb-2 text-[32px] font-extrabold leading-[41px] tracking-[0.32px] tablet:mt-10 tablet:text-5xl">
-          Our Team
+          {t('ourTeam')}
         </h1>
       </div>
 

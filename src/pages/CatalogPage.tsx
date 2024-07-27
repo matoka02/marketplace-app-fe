@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { useGetProductsQuery } from '../redux/api/productAPI';
 import { IProduct } from '../types/Product';
@@ -11,24 +12,14 @@ import { Loader } from '../components/Loader';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { BreadCrumb } from '../components/BreadCrumb';
 
-const sortOptions = [
-  { value: 'Newest', label: 'Newest' },
-  { value: 'Oldest', label: 'Oldest' },
-];
-
 const perPageOptions = [
   { value: '8', label: '8' },
   { value: '16', label: '16' },
   { value: '24', label: '24' },
 ];
 
-const title: CatalogTitle = {
-  '/phones': 'Mobile phones',
-  '/tablets': 'Tablets',
-  '/accessories': 'Accessories',
-};
-
 const CatalogPage: React.FC = () => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const [searchParams] = useSearchParams();
   const currentPage = Number(searchParams.get('page') || 1);
@@ -47,8 +38,20 @@ const CatalogPage: React.FC = () => {
     type: pathname.slice(1),
   });
 
+  const title: CatalogTitle = {
+    '/phones': t('mobilePhones'),
+    '/tablets': t('tablets'),
+    '/accessories': t('accessories'),
+  };
+
+  const sortOptions = [
+    { value: `${t('newest')}`, label: `${t('newest')}` },
+    { value: `${t('oldest')}`, label: `${t('oldest')}` },
+  ];
+
   const total = products ? products.totalProducts : 0;
-  const modelCounter = total === 1 ? `${total} model` : `${total} models`;
+  const modelCounter =
+    total === 1 ? `${total} ${t('models')}` : `${total} ${t('models')}`;
 
   const handlePageNumber = (pageNo: number) => {
     searchParams.set('page', pageNo.toString());
@@ -62,7 +65,7 @@ const CatalogPage: React.FC = () => {
 
           <header>
             <h1 className="mb-2 text-[32px] font-extrabold leading-[41px] tracking-[0.32px] tablet:mt-10 tablet:text-5xl dark:text-primary-dark">
-              {title[pathname as keyof CatalogTitle]}
+              {t(title[pathname as keyof CatalogTitle])}
             </h1>
 
             <p className="text-sm font-semibold leading-[21px] text-secondary-light dark:text-secondary-dark mb-8">
@@ -73,7 +76,7 @@ const CatalogPage: React.FC = () => {
             <div className="flex gap-4 mb-6">
               <Dropdown
                 className="w-[136px] tablet:w-[187px] dark:bg-white-dark dark:text-secondary-dark dark:border-none"
-                label="Sort By"
+                label={t('sortBy')}
                 query="sortBy"
                 options={sortOptions}
               />
@@ -81,7 +84,7 @@ const CatalogPage: React.FC = () => {
               <Dropdown
                 query="perPage"
                 className="w-[136px] dark:bg-white-dark dark:text-secondary-dark dark:border-none"
-                label="Items on page"
+                label={t('itemsOnPage')}
                 options={perPageOptions}
               />
             </div>
@@ -98,7 +101,7 @@ const CatalogPage: React.FC = () => {
               ))
             ) : (
               <p className="col-span-4 tablet:col-span-12 desktop:col-span-24 dark:text-primary-dark">
-                Sorry, we ran out of these products
+                {t('runOutOfProducts')}
               </p>
             )}
           </div>
