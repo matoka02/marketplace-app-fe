@@ -1,4 +1,6 @@
+import { contacts } from '../utils/contacts';
 import { BreadCrumb } from '../components/BreadCrumb';
+import { ContactCard } from '../components/ContactCard';
 
 const ContactsPage = () => {
   return (
@@ -15,15 +17,9 @@ const ContactsPage = () => {
       </div>
 
       <section className="grid grid-cols-1 gap-4 tablet:grid-cols-2 desktop:grid-cols-4">
-        <article
-          className="card box-border p-8 relative
-            border border-secondary rounded-lg
-            min-w-[272px]  max-h-[440px]
-            bg-white
-            hover:shadow-card tablet:max-h-[506px]"
-        >
-          <h2>Ghost Matoka</h2>
-        </article>
+        {contacts.map((contact) => (
+          <ContactCard key={contact.id} contact={contact} />
+        ))}
       </section>
     </main>
   );
