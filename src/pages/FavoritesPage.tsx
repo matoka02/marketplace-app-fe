@@ -12,13 +12,13 @@ const FavoritesPage: React.FC = () => {
       <BreadCrumb />
 
       <header>
-        <h1 className="mb-2 text-[32px] font-extrabold leading-[41px] tracking-[0.32px] tablet:mt-10 tablet:text-5xl">
+        <h1 className="mb-2 text-[32px] font-extrabold leading-[41px] tracking-[0.32px] tablet:mt-10 tablet:text-5xl dark:text-primary-dark">
           Favorites
         </h1>
       </header>
       {favoriteItems.length ? (
         <>
-          <p className="text-sm mb-8 tablet:mb-9 font-semibold leading-[21px] text-secondary">
+          <p className="text-sm mb-8 tablet:mb-9 font-semibold leading-[21px] text-secondary dark:text-secondary-dark">
             {`${favoriteItems.length} items`}
           </p>
           <div className="grid grid-cols-1 gap-4 tablet:grid-cols-2 desktop:grid-cols-4">
