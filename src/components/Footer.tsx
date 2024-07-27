@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+
 import { FiChevronUp } from 'react-icons/fi';
 
 import logo from '../assets/images/logo.svg';
@@ -32,12 +33,12 @@ const Footer = () => {
               </li>
 
               <li>
-                <a
+                <NavLink
+                  to="/contacts"
                   className="duration-150 select-none uppercase text-secondary font-extrabold text-xs hover:text-primary active:text-primary focus:text-primary font-Mont"
-                  href="#"
                 >
                   Contacts
-                </a>
+                </NavLink>
               </li>
 
               <li>

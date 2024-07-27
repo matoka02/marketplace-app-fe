@@ -15,6 +15,7 @@ import CartPage from './pages/CartPage';
 import ProductPage from './pages/ProductPage';
 import FavoritesPage from './pages/FavoritesPage';
 import HomePage from './pages/HomePage';
+import ContactsPage from './pages/ContactsPage';
 
 export const Root = () => {
   return (
@@ -39,6 +40,7 @@ export const Root = () => {
           </Route>
           <Route path="favorites" element={<FavoritesPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="contacts" element={<ContactsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

@@ -1,8 +1,7 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import { FiChevronsLeft } from 'react-icons/fi';
 
 import { clearCart, useAppDispatch, useAppSelector } from '../redux';
 import { getTotalProductsCost } from '../utils/getTotalCost';
@@ -10,10 +9,9 @@ import { getTotalItemsCount } from '../utils/getTotalItemsCount';
 import { Button } from '../components/Button';
 import { CartItem } from '../components/CartItem';
 import { CheckoutModal } from '../components/CheckoutModal';
+import { BreadCrumb } from '../components/BreadCrumb';
 
 const CartPage: React.FC = () => {
-  const navigate = useNavigate();
-
   const { items: cartItems } = useAppSelector((state) => state.cart);
   const [showModal, setShowModal] = useState<boolean>(false);
   const dispatch = useAppDispatch();
@@ -40,16 +38,11 @@ const CartPage: React.FC = () => {
 
       <main
         className={classNames(
-          'container mx-auto flex flex-col px-4 py-6 tablet:px-6 desktop:w-[1200px] desktop:px-8',
+          'container mx-auto flex flex-col p-4 pb-6 tablet:px-6 desktop:w-[1200px]',
           { 'blur pointer-events-none': showModal },
         )}
       >
-        <span
-          onClick={() => navigate(-1)}
-          className="select-none cursor-pointer flex items-center gap-1"
-        >
-          <FiChevronsLeft /> Back
-        </span>
+        <BreadCrumb />
 
         <div className="mb-8">
           <h1 className="mb-2 text-[32px] font-extrabold leading-[41px] tracking-[0.32px] tablet:mt-10 tablet:text-5xl">
