@@ -23,3 +23,8 @@ export interface IProduct {
   description: IDescription[];
   category: ICategory;
 }
+
+/**
+ * Visible in the following elements: Card, CartItem, CartPage, ProductPage
+ */
+export const localCurrency: string = '€';

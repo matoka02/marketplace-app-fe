@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { FiMinus, FiPlus, FiX } from 'react-icons/fi';
 
 import { ICartItem } from '../types/CartItem';
+import { localCurrency } from '../types/Product';
 import { decreaseItemCount, increaseItemCount, removeFromCart } from '../redux';
 
 type Props = {
@@ -117,7 +118,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           </span>
         </div>
         <p className="text-primary-light dark:text-primary-dark font-extrabold text-[22px] select-none">
-          €{price}
+          {localCurrency + price}
         </p>
       </div>
     </div>
