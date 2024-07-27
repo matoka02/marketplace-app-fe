@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import classNames from 'classnames';
 import { FiChevronLeft, FiHeart } from 'react-icons/fi';
@@ -13,6 +14,7 @@ import {
 } from '../redux';
 import { useGetProductByIdQuery } from '../redux/api/productAPI';
 import { IDescription } from '../types/Description';
+import { localCurrency } from '../types/Product';
 
 import { BreadCrumb } from '../components/BreadCrumb';
 import { ColorSelector } from '../components/ColorSelector';
@@ -38,6 +40,8 @@ const ProductPage = () => {
 
   const isFavorite = favoriteItems.some((item) => item._id === data?.id);
   const isAddedToCart = items.some((item) => item.id === productId);
+
+  const { t } = useTranslation();
 
   const route = pathname.split('/')[1];
   const links = [
@@ -75,13 +79,13 @@ const ProductPage = () => {
 
   const handleAddToCart = () => {
     if (items.some(({ id }) => id === data?._id)) {
-      toast.error('This product already in cart');
+      toast.error(t('toTheCartError'));
 
       return;
     }
 
     dispatch(addItemToCart(itemData));
-    toast.success('Successfully added to cart!');
+    toast.success(t('toTheCart'));
   };
 
   return (
@@ -103,7 +107,7 @@ const ProductPage = () => {
             >
               <span>
                 <FiChevronLeft className="inline mr-1" />
-                Back
+                {t('back')}
               </span>
             </NavLink>
             <h1 className="font-extrabold text-4xl text-primary-light dark:text-primary-dark leading-tight mb-6 col-span-4 tablet:col-span-12 desktop:col-span-24 col-start-1">
@@ -140,7 +144,9 @@ const ProductPage = () => {
               </div>
 
               <div className="col-span-4 tablet:col-span-5 desktop:col-span-12">
-                <p className="text-xs text-secondary">Available colors</p>
+                <p className="text-xs text-secondary-light dark:text-secondary-dark">
+                  {t('availableColors')}
+                </p>
 
                 <div className="flex space-x-2 mt-2">
                   {data?.colorsAvailable.map((color) => (
@@ -156,7 +162,7 @@ const ProductPage = () => {
 
                 <div className="mt-6 col-span-4 tablet:col-start-7 tablet:col-span-5 desktop:col-start-12 desktop:col-span-7">
                   <p className="text-xs text-secondary-light dark:text-secondary-dark mb-2">
-                    Select capacity
+                    {t('selectCapacity')}
                   </p>
 
                   {data?.capacityAvailable &&
@@ -170,10 +176,14 @@ const ProductPage = () => {
                 </div>
 
                 <div className="flex mt-8">
-                  <h2 className="mr-2 before:content-['$'] font-extrabold text-4xl text-primary-light dark:text-primary-dark">
+                  <h2
+                    className={`mr-2 before:content-['${localCurrency}'] font-extrabold text-4xl text-primary-light dark:text-primary-dark`}
+                  >
                     {data?.priceDiscount}
                   </h2>
-                  <h3 className="text-2xl before:content-['$'] text-secondary-light dark:text-secondary-dark font-medium ml-2 flex items-center line-through mr-2">
+                  <h3
+                    className={`text-2xl before:content-['${localCurrency}'] text-secondary-light dark:text-secondary-dark font-medium ml-2 flex items-center line-through mr-2`}
+                  >
                     {data?.priceRegular}
                   </h3>
                 </div>
@@ -184,7 +194,7 @@ const ProductPage = () => {
                     onClick={handleAddToCart}
                     outline={!!isAddedToCart}
                   >
-                    {isAddedToCart ? 'Added to cart' : 'Add to cart'}
+                    {isAddedToCart ? t('addedToCart') : t('addToCart')}
                   </Button>
                   <div>
                     <button
@@ -210,7 +220,7 @@ const ProductPage = () => {
                         key={characteristic}
                         className="col-span-4 tablet:col-span-12"
                       >
-                        <p className="text-left text-xs font-semibold text-secondary">
+                        <p className="text-left text-xs font-semibold text-primary-light dark:text-secondary-dark">
                           {characteristic}
                         </p>
                         <p className="text-right text-xs font-bold text-primary-light dark:text-primary-dark">
@@ -227,14 +237,14 @@ const ProductPage = () => {
                 <>
                   <div className="desktop:w-1/2">
                     <h2 className="mt-16 font-extrabold text-2xl text-primary-light dark:text-primary-dark">
-                      About
+                      {t('about')}
                     </h2>
                     <Line width="col-span-4 w-auto tablet:col-start-7 tablet:col-span-5 tablet:w-auto desktop:col-start-12 desktop:col-span-7 desktop:w-[320px] mt-6" />
 
                     {data.description.map((descItem: IDescription) => (
                       <div key={descItem._id}>
                         <h3 className="mt-8 font-bold text-primary-light dark:text-primary-dark text-xl">
-                          {descItem.title}
+                          {t(descItem.title)}
                         </h3>
                         <p className="mt-4 text-secondary-light dark:text-secondary-dark font-medium text-sm">
                           {descItem.text.map((textItem) => (
@@ -249,7 +259,7 @@ const ProductPage = () => {
 
               <div className="desktop:w-1/2">
                 <h2 className="mt-16 font-extrabold text-2xl text-primary-light dark:text-primary-dark">
-                  Tech specs
+                  {t('techSpecs')}
                 </h2>
 
                 <Line width="col-span-4 w-auto tablet:col-start-7 tablet:col-span-5 tablet:w-auto desktop:col-start-12 desktop:col-span-7 desktop:w-[320px] mt-6" />
@@ -274,7 +284,7 @@ const ProductPage = () => {
               </div>
             </section>
             <section className="col-span-4 tablet:col-span-12 desktop:col-span-24">
-              <Carousel title={'Recommended'} type={'recommended'} />
+              <Carousel title={t('recommended')} type={'recommended'} />
             </section>
           </Loader>
         </ErrorMessage>

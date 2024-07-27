@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import classNames from 'classnames';
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
 
-import { IProduct } from '../types/Product';
+import { IProduct, localCurrency } from '../types/Product';
 import {
   addItemToCart,
   toggleFavorite,
@@ -25,6 +26,7 @@ export const Card = ({ product, isFetching }: Props) => {
   const { favoriteItems } = useAppSelector((state) => state.favorites);
   const [favorite, setFavorite] = useState(false);
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const isFavorite = (id: string) =>
     favoriteItems.some((item) => item._id === id);
@@ -43,7 +45,7 @@ export const Card = ({ product, isFetching }: Props) => {
 
   const handleAddToCart = () => {
     if (items.some(({ id }) => id === product._id)) {
-      toast.error('his product already in cart');
+      toast.error(t('toTheCartError'));
 
       return;
     }
@@ -60,7 +62,7 @@ export const Card = ({ product, isFetching }: Props) => {
     };
 
     dispatch(addItemToCart(itemData));
-    toast.success('Successfully added to cart!');
+    toast.success(t('toTheCart'));
   };
 
   return (
@@ -96,18 +98,24 @@ export const Card = ({ product, isFetching }: Props) => {
           {product.name}
         </h3>
         <div className="flex gap-2">
-          <h3 className="text-xl font-extrabold leading-8 before:content-['$'] dark:text-primary-dark">
+          <h3
+            className={`text-xl font-extrabold leading-8 before:content-['${localCurrency}'] dark:text-primary-dark`}
+          >
             {product.priceDiscount}
           </h3>
-          <h3 className="relative text-xl line-through font-semibold leading-8 text-secondary-light dark:text-secondary-dark before:content-['$']">
+          <h3
+            className={`relative text-xl line-through font-semibold leading-8 text-secondary-light dark:text-secondary-dark before:content-['${localCurrency}']`}
+          >
             {product.priceRegular}
           </h3>
         </div>
         <span className="border border-secondary-light dark:border-secondary-dark border-t w-full" />
+
         <ProductProperties properties={productProps} />
+
         <div className="flex justify-between gap-x-[8px]">
           <Button onClick={handleAddToCart} outline={!!isAddedToCart}>
-            {isAddedToCart ? 'Added to cart' : 'Add to cart'}
+            {isAddedToCart ? t('addedToCart') : t('addToCart')}
           </Button>
           <button
             className={classNames([
