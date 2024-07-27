@@ -170,10 +170,10 @@ const ProductPage = () => {
                 </div>
 
                 <div className="flex mt-8">
-                  <h2 className="mr-2 before:content-['$'] font-extrabold text-4xl text-primary-light dark:text-primary-dark">
+                  <h2 className="mr-2 before:content-['€'] font-extrabold text-4xl text-primary-light dark:text-primary-dark">
                     {data?.priceDiscount}
                   </h2>
-                  <h3 className="text-2xl before:content-['$'] text-secondary-light dark:text-secondary-dark font-medium ml-2 flex items-center line-through mr-2">
+                  <h3 className="text-2xl before:content-['€'] text-secondary-light dark:text-secondary-dark font-medium ml-2 flex items-center line-through mr-2">
                     {data?.priceRegular}
                   </h3>
                 </div>

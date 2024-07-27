@@ -58,7 +58,7 @@ const CartPage: React.FC = () => {
 
             <div className="box-border flex flex-col mx-auto desktop:mx-0 items-center rounded-lg p-6 w-full border border-elements-light dark:border-elements-dark bg-hover-bg-light dark:bg-hover-bg-dark desktop:w-[368px]">
               <h3 className="select-none text-center text-primary-light dark:text-primary-dark text-[32px] font-extrabold leading-[41px]">
-                {`${totalCost}$`}
+                {`${totalCost}€`}
               </h3>
               <div className="text-center text-secondary-light dark:text-secondary-dark text-sm font-semibold leading-[21px] mb-4">
                 {`Total for ${totalItemsCount} items`}

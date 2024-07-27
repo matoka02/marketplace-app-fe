@@ -117,7 +117,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           </span>
         </div>
         <p className="text-primary-light dark:text-primary-dark font-extrabold text-[22px] select-none">
-          ${price}
+          €{price}
         </p>
       </div>
     </div>

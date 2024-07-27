@@ -96,10 +96,10 @@ export const Card = ({ product, isFetching }: Props) => {
           {product.name}
         </h3>
         <div className="flex gap-2">
-          <h3 className="text-xl font-extrabold leading-8 before:content-['$'] dark:text-primary-dark">
+          <h3 className="text-xl font-extrabold leading-8 before:content-['€'] dark:text-primary-dark">
             {product.priceDiscount}
           </h3>
-          <h3 className="relative text-xl line-through font-semibold leading-8 text-secondary-light dark:text-secondary-dark before:content-['$']">
+          <h3 className="relative text-xl line-through font-semibold leading-8 text-secondary-light dark:text-secondary-dark before:content-['€']">
             {product.priceRegular}
           </h3>
         </div>
