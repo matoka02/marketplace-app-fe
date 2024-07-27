@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const ThemeToggle = () => {
+export const ThemeToggle = () => {
   const activeTheme = localStorage.getItem('theme') || 'light';
   const [theme, setTheme] = useState(activeTheme);
   const isLight = () => theme !== 'light';
@@ -85,5 +85,3 @@ const ThemeToggle = () => {
     </>
   );
 };
-
-export default ThemeToggle;
