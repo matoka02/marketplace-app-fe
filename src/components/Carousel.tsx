@@ -29,9 +29,9 @@ function SampleNextArrow(props: any) {
   return (
     <button
       onClick={onClick}
-      className="absolute top-0 right-0 cursor-pointer border rounded-full border-icons border-solid hover:border-primary active:text-primary focus:text-primary h-8 w-8 flex items-center justify-center"
+      className="absolute top-0 right-0 cursor-pointer border rounded-full border-icons-light dark:border-icons-dark border-solid hover:border-primary-light dark:hover:border-primary-dark active:text-primary-light dark:active:text-primary-dark focus:text-primary-light dark:focus:text-primary-dark h-8 w-8 flex items-center justify-center"
     >
-      <FiChevronRight className="w-4 h-4" />
+      <FiChevronRight className="w-4 h-4 dark:text-primary-dark" />
     </button>
   );
 }
@@ -42,9 +42,9 @@ function SamplePrevArrow(props: any) {
   return (
     <button
       onClick={onClick}
-      className="absolute top-0 right-12 cursor-pointer border rounded-full border-icons border-solid hover:border-primary active:text-primary focus:text-primary h-8 w-8 flex items-center justify-center"
+      className="absolute top-0 right-12 cursor-pointer border rounded-full border-icons-light dark:border-icons-dark border-solid hover:border-primary-light dark:hover:border-primary-dark active:text-primary-light dark:active:text-primary-dark focus:text-primary-light dark:focus:text-primary-dark h-8 w-8 flex items-center justify-center"
     >
-      <FiChevronLeft className="w-4 h-4" />
+      <FiChevronLeft className="w-4 h-4 dark:text-primary-dark" />
     </button>
   );
 }
@@ -66,7 +66,7 @@ export const Carousel: React.FC<Props> = ({ title, type }) => {
     <div className="Carousel relative mx-auto desktop:max-w-[1152px] py-16 mt-14 desktop:py-20">
       <ErrorMessage isError={isError}>
         <Loader isLoading={isFetching}>
-          <h2 className="font-extrabold text-2xl desktop:text-4xl text-primary absolute left-0 top-0 mx-4">
+          <h2 className="font-extrabold text-2xl desktop:text-4xl text-primary-light dark:text-primary-dark absolute left-0 top-0 mx-4">
             {title}
           </h2>
           <Slider {...settings} className="space-x-4">
@@ -74,9 +74,9 @@ export const Carousel: React.FC<Props> = ({ title, type }) => {
               products.map((product: IProduct) => (
                 <div key={product._id} className="max-w-[272px]">
                   <Card
-                    key={product._id}
-                    product={product}
                     isFetching={isFetching}
+                    product={product}
+                    key={product._id}
                   />
                 </div>
               ))}
