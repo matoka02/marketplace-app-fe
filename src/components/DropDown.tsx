@@ -29,7 +29,9 @@ export const Dropdown: React.FC<Props> = (props) => {
 
   return (
     <div>
-      <h3 className="text-secondary text-xs font-bold mb-1">{label}</h3>
+      <h3 className="text-secondary-light dark:text-secondary-dark text-xs font-bold mb-1">
+        {label}
+      </h3>
       <div className="relative">
         <button
           onClick={() => setIsOpen((prev) => !prev)}
@@ -43,44 +45,44 @@ export const Dropdown: React.FC<Props> = (props) => {
             [
               'h-10 px-[12px] py-[10px]',
               'flex justify-between items-center',
-              'rounded-lg border-2 border-icons',
+              'rounded-lg border-2 border-icons-light',
               'hover:border-secondary',
             ],
-            { '!border-primary': isOpen },
+            {
+              '!border-primary-light': isOpen,
+            },
           )}
         >
-          <p className="text-stone-950 text-sm font-bold leading-[21px]">
+          <p className="text-stone-950 text-sm font-bold leading-[21px] dark:text-primary-dark">
             {currentValue}
           </p>
-          <p>
-            {!isOpen ? (
-              <FiChevronDown className="text-icons" />
-            ) : (
-              <FiChevronUp className="text-icons" />
-            )}
-          </p>
+          {!isOpen ? (
+            <FiChevronDown className="text-icons-light" />
+          ) : (
+            <FiChevronUp className="text-icons" />
+          )}
         </button>
 
         {isOpen && (
           <div
+            className={classNames(
+              className,
+              'absolute left-0 z-10 mt-2 w-[136px] rounded-md shadow-option bg-white-light dark:bg-white-dark  ring-opacity-5 focus:outline-none border-2 border-icons-light',
+            )}
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="menu-button"
             tabIndex={-1}
-            className={classNames(
-              className,
-              'absolute left-0 z-10 mt-2 w-[136px] rounded-md shadow-option bg-white ring-opacity-5 focus:outline-none border-2 border-icons',
-            )}
           >
             <div role="none">
               {options.map((option) => (
                 <button
                   key={option.value}
+                  className="text-secondary-light dark:text-secondary-dark hover:text-primary-light dark:hover:text-primary-dark  block px-4 py-2 text-sm w-full text-left hover:bg-hover-bg-light dark:hover:bg-hover-bg-dark hover:rounded-md"
                   role="menuitem"
-                  id={`menu-item-${option.value}`}
                   tabIndex={-1}
+                  id={`menu-item-${option.value}`}
                   onClick={() => handleSelectFilter(option.value)}
-                  className="text-secondary hover:text-primary block px-4 py-2 text-sm w-full text-left hover:bg-hover-bg hover:rounded-lg"
                 >
                   {option.label}
                 </button>
