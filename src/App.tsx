@@ -4,7 +4,7 @@ import useLocalStorage from './hooks/useLocalStorage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-function App() {
+const App = () => {
   useLocalStorage();
 
   return (
@@ -18,6 +18,6 @@ function App() {
       <Footer />
     </div>
   );
-}
+};
 
 export default App;
