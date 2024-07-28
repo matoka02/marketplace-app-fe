@@ -15,7 +15,7 @@ export const LanguageSelector = () => {
     setMenuIsOpen(false);
   };
 
-  const languageCodes = ['en', 'fi', 'ua'];
+  const languageCodes = ['en', 'fi', 'uk'];
 
   return (
     <div
