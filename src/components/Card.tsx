@@ -6,7 +6,8 @@ import classNames from 'classnames';
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
 
-import { IProduct, localCurrency } from '../types/Product';
+import { IProduct } from '../types/Product';
+// import { localCurrency } from '../types/Product';
 import {
   addItemToCart,
   toggleFavorite,
@@ -99,12 +100,12 @@ export const Card = ({ product, isFetching }: Props) => {
         </h3>
         <div className="flex gap-2">
           <h3
-            className={`text-xl font-extrabold leading-8 before:content-['${String(localCurrency)}'] dark:text-primary-dark`}
+            className={`text-xl font-extrabold leading-8 before:content-['€'] dark:text-primary-dark`}
           >
             {product.priceDiscount}
           </h3>
           <h3
-            className={`relative text-xl line-through font-semibold leading-8 text-secondary-light dark:text-secondary-dark before:content-['${String(localCurrency)}']`}
+            className={`relative text-xl line-through font-semibold leading-8 text-secondary-light dark:text-secondary-dark before:content-['€']`}
           >
             {product.priceRegular}
           </h3>
